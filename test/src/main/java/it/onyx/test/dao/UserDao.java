@@ -31,8 +31,19 @@ public class UserDao {
 	@Column(name="password")
 	private String password;
 	
+	public UserDao () {
+		
+	}
 	
 	
+	public UserDao ( String nome, String cognome, String num_telefono, String email, String password, String id  ) {
+		this.cognome = cognome;
+		this.nome = nome;
+		this.email = email;
+		this.password = password;
+		this.num_telefono = num_telefono;
+		this.id_cliente = id;
+	}
 	
 	public String getNome() {
 		return nome;

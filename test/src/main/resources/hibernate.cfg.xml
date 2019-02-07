@@ -8,7 +8,7 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1234</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping class="it.onyx.MvnLog.dao.UserDao"/>
+    <mapping class="it.onyx.test.dao.UserDao"/>
    
   </session-factory>
 </hibernate-configuration>
