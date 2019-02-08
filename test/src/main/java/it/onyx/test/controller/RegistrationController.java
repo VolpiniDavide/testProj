@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.onyx.test.dao.UserDao;
 import it.onyx.test.form.UserForm;
+import it.onyx.test.repository.UserRepository;
 import it.onyx.test.service.UserService;
 import it.onyx.test.util.Util2;
 
@@ -21,6 +22,8 @@ import it.onyx.test.util.Util2;
 @Controller
 public class RegistrationController {
 	
+	//@Autowired 
+	//UserRepository userRepo;
 	
 	@Autowired
 	UserService userService;
@@ -28,7 +31,7 @@ public class RegistrationController {
 	@Autowired
 	UserDao ux;
 	
-	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+	ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 	
 @RequestMapping(value="/registration")
 public String ShowRegister(@ModelAttribute UserForm userForm, Model model) {

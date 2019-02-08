@@ -1,59 +1,54 @@
 package it.onyx.test.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import it.onyx.test.dao.UserDao;
 import it.onyx.test.repository.UserRepository;
 import it.onyx.test.service.UserService;
 
-@Component("UserServiceImpl")
-@Service
-public class UserServiceImpl implements UserService {
+@EnableJpaRepositories("it.onyx.test.repository") 
+@Component
+public class UserServiceImpl implements UserService{
+	
+	ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+	
+	@Autowired
+	UserRepository userRepo;
 
-	
-	private UserRepository userRepo;
-	
 	@Override
 	public UserDao create(UserDao user) {
-		UserDao userCreated = user;
-		return userRepo.save(userCreated);
+		// TODO Auto-generated method stub
+		return userRepo.save(user);
 	}
 
 	@Override
 	public UserDao delete(int id) throws Exception {
-		Optional<UserDao> optionalUserDao = userRepo.findById((long) id);
-		UserDao deletedUserDao = optionalUserDao.get();
-		 
-        if (deletedUserDao == null)
-            System.out.println("non posso cancellare, non c'è!");
- 
-        userRepo.delete(deletedUserDao);
-        return deletedUserDao;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List findAll() {
-		return userRepo.findAll();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public UserDao update(UserDao user) throws Exception {
-		// TODO STUDIARE METODO UPDATE !!!
+	public UserDao update(UserDao shop) throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public UserDao findById(int id) {
-		Optional<UserDao> optionalUserDao = userRepo.findById((long) id);
-		UserDao foundUserDao = optionalUserDao.get();
-		return foundUserDao;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
