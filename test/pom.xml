@@ -112,6 +112,43 @@
     <version>5.2.17.Final</version>
 </dependency>
 
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-aop</artifactId>
+  <version>2.0.0.RELEASE</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-jdbc</artifactId>
+  <version>2.0.0.RELEASE</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-core</artifactId>
+  <version>5.2.12.Final</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>javax.transaction</groupId>
+  <artifactId>javax.transaction-api</artifactId>
+  <version>1.2</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>org.springframework.data</groupId>
+  <artifactId>spring-data-jpa</artifactId>
+  <version>2.0.1.RELEASE</version>
+  <scope>compile</scope>
+</dependency>
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-aspects</artifactId>
+  <version>5.0.1.RELEASE</version>
+  <scope>compile</scope>
+</dependency>
+
   	
   
   </dependencies>

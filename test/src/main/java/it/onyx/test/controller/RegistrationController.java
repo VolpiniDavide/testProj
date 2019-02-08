@@ -1,5 +1,11 @@
 package it.onyx.test.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,18 +14,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.onyx.test.dao.UserDao;
 import it.onyx.test.form.UserForm;
+import it.onyx.test.service.UserService;
 import it.onyx.test.util.Util2;
+
 
 @Controller
 public class RegistrationController {
+	
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	UserDao ux;
+	
+	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 	
 @RequestMapping(value="/registration")
 public String ShowRegister(@ModelAttribute UserForm userForm, Model model) {
 	return "registration";
  }
-
-
-
 
 
 @RequestMapping(value="/registration", method= RequestMethod.POST)
@@ -42,14 +56,16 @@ public String register(@ModelAttribute UserForm userForm, Model model) {
 	if(firstName != null && lastName != null && number != null && email != null && password != null ) {
 		if (firstName != "" && lastName != "" && number  != "" && email  != "" && password  != "") {
 			
-			UserDao ux = new UserDao(firstName, lastName, number, email, password, "0");
-			if(Util2.createUser(ux)) {
+			
+			ux.setCognome(lastName);ux.setNome(firstName);ux.setEmail(email);ux.setNum_telefono(number);ux.setPassword(password);
+			//if(Util2.createUser(ux)) {
+				userService.create(ux);
 				model.addAttribute("Message", "REGISTRATION SUCCESSFUL");
 				return "/user";
-			}else {
-				model.addAttribute("Message", "SOMETHING WENT WRONG... TRY AGAIN !");
-				return "/registration";
-			}
+			//}else {
+			//	model.addAttribute("Message", "SOMETHING WENT WRONG... TRY AGAIN !");
+			//	return "/registration";
+			//}
 			
 		} else { 
 			model.addAttribute("Message", "ALL FIELDS REQUIRED");
